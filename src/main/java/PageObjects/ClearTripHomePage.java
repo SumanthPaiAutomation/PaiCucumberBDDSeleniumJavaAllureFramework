@@ -44,7 +44,7 @@ public class ClearTripHomePage {
     private WebElement whereFromCalendarDate;
     //div[contains(@aria-label,'Tue Dec 19 2023')]
 
-    @FindBy(xpath = "(//div[contains(@class,'DayPicker-wrapper')]/div/div/div/div/div)[38]")
+    @FindBy(xpath = "(//div[contains(@class,'DayPicker-wrapper')]/div/div/div/div/div)[39]")
     private WebElement whereToCalendarDate;
 
     @FindBy(xpath = "//span[.='Search flights']")
