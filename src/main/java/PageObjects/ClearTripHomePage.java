@@ -31,7 +31,7 @@ public class ClearTripHomePage {
 
     @FindBy(xpath = "//input[@placeholder='Where to?']")
     private WebElement whereTo;
-    @FindBy(xpath = "//p[contains(text(),'Delhi')]")
+    @FindBy(xpath = "//p[normalize-space()='New Delhi, IN - Indira Gandhi Airport (DEL)']")
     private WebElement wheretoOption;
 
     @FindBy(xpath = "(//div[contains(@class,'flex flex-middle p-relative homeCalender')]/button)[1]")
@@ -52,7 +52,7 @@ public class ClearTripHomePage {
 
 
     public void selectWhereFrom() {
-        try{
+        try {
             logger.info("Started to select whereFrom");
             Wait.untilElementIsVisible(driver, whereFrom, 10);
             whereFrom.click();
@@ -61,14 +61,14 @@ public class ClearTripHomePage {
             whereFromOption.click();
             logger.info("where from option clicked");
             logger.info("Wherefrom Selection complete");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
     public void selectWhereTo() {
-        try{
+        try {
             logger.info("Started to select whereTo");
             Wait.untilElementIsVisible(driver, whereTo, 10);
             whereTo.click();
@@ -77,14 +77,14 @@ public class ClearTripHomePage {
             wheretoOption.click();
             logger.info("where to option clicked");
             logger.info("whereto complete");
-        }catch (Exception e){
-e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
 
     public void selectWhereFromDate() throws InterruptedException {
-        try{
+        try {
             Thread.sleep(3000);
             GenUtils.scrollIntoView(driver, whereFromButton);
             //Wait.untilElementIsVisible(driver,whereFromButton,10);
@@ -96,7 +96,7 @@ e.printStackTrace();
             Thread.sleep(3000);
             whereFromCalendarDate.click();
             logger.info("clicked exact where from date");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -104,7 +104,7 @@ e.printStackTrace();
     }
 
     public void selectWhereToDate() throws InterruptedException {
-        try{
+        try {
             Thread.sleep(5000);
             Wait.untilElementIsVisible(driver, whereToButton, 10);
             GenUtils.scrollIntoView(driver, whereToButton);
@@ -114,7 +114,7 @@ e.printStackTrace();
             Wait.untilElementIsVisible(driver, whereToCalendarDate, 10);
             whereToCalendarDate.click();
             logger.info("clicked exact where to date");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -122,7 +122,7 @@ e.printStackTrace();
     }
 
     public void pressSearchFlight() throws InterruptedException {
-        try{
+        try {
             Thread.sleep(3000);
             GenUtils.scrollIntoView(driver, searchFlightButton);
             Wait.untilElementIsVisible(driver, searchFlightButton, 7);
@@ -130,7 +130,7 @@ e.printStackTrace();
             System.out.println("The parent window Handle is : " + parentWindowHandle);
             searchFlightButton.click();
             Thread.sleep(15000);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
