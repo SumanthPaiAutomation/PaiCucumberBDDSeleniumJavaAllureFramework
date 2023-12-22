@@ -52,64 +52,86 @@ public class ClearTripHomePage {
 
 
     public void selectWhereFrom() {
-        logger.info("Started to select whereFrom");
-        Wait.untilElementIsVisible(driver, whereFrom, 10);
-        whereFrom.click();
-        whereFrom.sendKeys("Bangalore");
-        Wait.untilElementIsVisible(driver, whereFromOption, 5);
-        whereFromOption.click();
-        logger.info("where from option clicked");
-        logger.info("Wherefrom Selection complete");
+        try{
+            logger.info("Started to select whereFrom");
+            Wait.untilElementIsVisible(driver, whereFrom, 10);
+            whereFrom.click();
+            whereFrom.sendKeys("Bangalore");
+            Wait.untilElementIsVisible(driver, whereFromOption, 5);
+            whereFromOption.click();
+            logger.info("where from option clicked");
+            logger.info("Wherefrom Selection complete");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void selectWhereTo() {
-        logger.info("Started to select whereTo");
-        Wait.untilElementIsVisible(driver, whereTo, 10);
-        whereTo.click();
-        whereTo.sendKeys("Delhi");
-        Wait.untilElementIsVisible(driver, wheretoOption, 5);
-        wheretoOption.click();
-        logger.info("where to option clicked");
-        logger.info("whereto complete");
+        try{
+            logger.info("Started to select whereTo");
+            Wait.untilElementIsVisible(driver, whereTo, 10);
+            whereTo.click();
+            whereTo.sendKeys("Delhi");
+            Wait.untilElementIsVisible(driver, wheretoOption, 5);
+            wheretoOption.click();
+            logger.info("where to option clicked");
+            logger.info("whereto complete");
+        }catch (Exception e){
+e.printStackTrace();
+        }
+
     }
 
     public void selectWhereFromDate() throws InterruptedException {
-        Thread.sleep(3000);
-        GenUtils.scrollIntoView(driver, whereFromButton);
-        //Wait.untilElementIsVisible(driver,whereFromButton,10);
-        whereFromButton.click();
-        logger.info("clicked where from calendar");
-        Thread.sleep(3000);
-        GenUtils.scrollIntoView(driver, whereFromCalendarDate);
-        Wait.untilElementIsVisible(driver, whereFromCalendarDate, 10);
-        Thread.sleep(3000);
-        whereFromCalendarDate.click();
-        logger.info("clicked exact where from date");
+        try{
+            Thread.sleep(3000);
+            GenUtils.scrollIntoView(driver, whereFromButton);
+            //Wait.untilElementIsVisible(driver,whereFromButton,10);
+            whereFromButton.click();
+            logger.info("clicked where from calendar");
+            Thread.sleep(3000);
+            GenUtils.scrollIntoView(driver, whereFromCalendarDate);
+            Wait.untilElementIsVisible(driver, whereFromCalendarDate, 10);
+            Thread.sleep(3000);
+            whereFromCalendarDate.click();
+            logger.info("clicked exact where from date");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
     }
 
     public void selectWhereToDate() throws InterruptedException {
-        Thread.sleep(5000);
-        Wait.untilElementIsVisible(driver, whereToButton, 10);
-        GenUtils.scrollIntoView(driver, whereToButton);
-        Thread.sleep(3000);
-        whereToButton.click();
-        Thread.sleep(3000);
-        Wait.untilElementIsVisible(driver, whereToCalendarDate, 10);
-        whereToCalendarDate.click();
-        logger.info("clicked exact where to date");
+        try{
+            Thread.sleep(5000);
+            Wait.untilElementIsVisible(driver, whereToButton, 10);
+            GenUtils.scrollIntoView(driver, whereToButton);
+            Thread.sleep(3000);
+            whereToButton.click();
+            Thread.sleep(3000);
+            Wait.untilElementIsVisible(driver, whereToCalendarDate, 10);
+            whereToCalendarDate.click();
+            logger.info("clicked exact where to date");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
     }
 
     public void pressSearchFlight() throws InterruptedException {
-        Thread.sleep(3000);
-        GenUtils.scrollIntoView(driver, searchFlightButton);
-        Wait.untilElementIsVisible(driver, searchFlightButton, 7);
-        parentWindowHandle = driver.getWindowHandle();
-        System.out.println("The parent window Handle is : " + parentWindowHandle);
-        searchFlightButton.click();
-        Thread.sleep(15000);
-
-
+        try{
+            Thread.sleep(3000);
+            GenUtils.scrollIntoView(driver, searchFlightButton);
+            Wait.untilElementIsVisible(driver, searchFlightButton, 7);
+            parentWindowHandle = driver.getWindowHandle();
+            System.out.println("The parent window Handle is : " + parentWindowHandle);
+            searchFlightButton.click();
+            Thread.sleep(15000);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

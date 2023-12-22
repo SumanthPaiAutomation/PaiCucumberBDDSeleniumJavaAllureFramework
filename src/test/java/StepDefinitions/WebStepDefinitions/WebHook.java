@@ -1,7 +1,6 @@
 package StepDefinitions.WebStepDefinitions;
 
-import Managers.FileReaderManager;
-import Utilities.TestContext;
+import Managers.AllDriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -14,17 +13,16 @@ import org.openqa.selenium.WebDriverException;
 import java.io.ByteArrayInputStream;
 
 public class WebHook {
-
-    TestContext testContext;
+    AllDriverManager allDriverManager;
     WebDriver webDriver;
 
-    public WebHook(TestContext context) {
-        testContext = context;
+    public WebHook(AllDriverManager allDriverManager) {
+        this.allDriverManager = allDriverManager;
     }
 
     @Before
     public void setUp() {
-        webDriver = testContext.getDriverManager().getDriver();// for webdriver
+        webDriver = allDriverManager.getDriver();// for webdriver
         //webDriver.get(FileReaderManager.getInstance().getConfigFileReader().getUrl());//comment this line for Mobile
     }
 
@@ -35,13 +33,13 @@ public class WebHook {
             try {
 
                 //String screenshot=((TakesScreenshot)testContext.getDriverManager().getDriver()).getScreenshotAs(OutputType.BYTES);
-                byte[] screenshot = ((TakesScreenshot)testContext.getDriverManager().getDriver()).getScreenshotAs(OutputType.BYTES);
+                byte[] screenshot = ((TakesScreenshot)allDriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
                 Allure.addAttachment("WebTestFailedScreenShot",new ByteArrayInputStream(screenshot));
                 scenario.attach(screenshot, "image/png", "screenshot");
             } catch (WebDriverException noSupportScreenshot) {
                 System.err.println(noSupportScreenshot.getMessage());
             }
         }
-        //testContext.getDriverManager().closeDriver();
+        allDriverManager.closeDriver();
     }
 }

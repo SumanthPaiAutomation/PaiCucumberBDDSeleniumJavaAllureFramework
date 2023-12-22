@@ -1,9 +1,9 @@
 package StepDefinitions.WebStepDefinitions;
 
+import Managers.AllDriverManager;
 import PageObjects.ClearTripCartPage;
 import PageObjects.ClearTripHomePage;
 import PageObjects.ClearTripTicketListPage;
-import Utilities.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,15 +12,16 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class CheapestTicketSteps {
-    TestContext testContext;
+
+    AllDriverManager allDriverManager;
     WebDriver driver;
     ClearTripHomePage clearTripHomePage;
     ClearTripTicketListPage clearTripTicketListPage;
     ClearTripCartPage clearTripCartPage;
 
-    public CheapestTicketSteps(TestContext context) {
-        this.testContext = context;
-        this.driver = testContext.getDriverManager().getDriver();
+    public CheapestTicketSteps(AllDriverManager allDriverManager) {
+        this.allDriverManager = allDriverManager;
+        this.driver = allDriverManager.getDriver();
         this.clearTripHomePage = new ClearTripHomePage(driver);
         this.clearTripTicketListPage = new ClearTripTicketListPage(driver);
         this.clearTripCartPage = new ClearTripCartPage(driver);

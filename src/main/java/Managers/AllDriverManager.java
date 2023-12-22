@@ -64,7 +64,7 @@ public class AllDriverManager {
     }
 
     private WebDriver createRemoteDriver() {
-        throw new RuntimeException("Remote web driver is not yet implemented");
+        throw new RuntimeException("Provision to implement remote driver here");
     }
 
     private WebDriver createDriver() {
@@ -97,4 +97,9 @@ public class AllDriverManager {
             webDriver = null;
         }
     }
+
+    public AllDriverManager getAllDriverInstance(){
+        return new AllDriverManager();
+    }
+
 }

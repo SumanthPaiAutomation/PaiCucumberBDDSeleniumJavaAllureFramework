@@ -21,31 +21,43 @@ public class ClearTripCartPage {
     private WebElement itenaryText;
 
     public boolean verifyCartPage() {
-        Set<String> windowHandles = driver.getWindowHandles();
         boolean status = false;
-        Iterator<String> iterator = windowHandles.iterator();
-        while (iterator.hasNext()) {
-            String childWindow = iterator.next();
-            if (!ClearTripHomePage.parentWindowHandle.equals(childWindow)) {
-                driver.switchTo().window(childWindow);
-                System.out.println("Number of child windows : "+windowHandles.size());
-                System.out.println("Child window reached : "+childWindow);
-                Wait.untilElementIsVisible(driver, itenaryText, 10);
-                if (itenaryText.isDisplayed()) {
-                    status = true;
-                } else {
-                    status = false;
-                }
-                driver.close();
-            }
-        }
-        return status;
+        try{
+            Set<String> windowHandles = driver.getWindowHandles();
 
+            Iterator<String> iterator = windowHandles.iterator();
+            while (iterator.hasNext()) {
+                String childWindow = iterator.next();
+                if (!ClearTripHomePage.parentWindowHandle.equals(childWindow)) {
+                    driver.switchTo().window(childWindow);
+                    System.out.println("Number of child windows : "+windowHandles.size());
+                    System.out.println("Child window reached : "+childWindow);
+                    Wait.untilElementIsVisible(driver, itenaryText, 10);
+                    if (itenaryText.isDisplayed()) {
+                        status = true;
+                    } else {
+                        status = false;
+                    }
+                    driver.close();
+                }
+            }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return status;
     }
 
     public void switchToTicketList() {
-        driver.switchTo().window(ClearTripHomePage.parentWindowHandle);
-        driver.quit();
+        try{
+            driver.switchTo().window(ClearTripHomePage.parentWindowHandle);
+            driver.quit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 }

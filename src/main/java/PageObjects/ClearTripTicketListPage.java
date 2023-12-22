@@ -10,24 +10,38 @@ public class ClearTripTicketListPage {
     private final WebDriver driver;
 
     public ClearTripTicketListPage(WebDriver webDriver) {
-        this.driver = webDriver;
-        PageFactory.initElements(this.driver, this);
+
+            this.driver = webDriver;
+            PageFactory.initElements(this.driver, this);
+
+
     }
 
     @FindBy(xpath = "//button[contains(.,'Book now')]")
     private WebElement BookNowButton;
 
     public boolean reachedTicketListPage() {
-        String curUrl = driver.getCurrentUrl();
-        if (curUrl.contains("results")) {
-            return true;
-        } else {
-            return false;
+        boolean reachedflag=false;
+        try{
+            String curUrl = driver.getCurrentUrl();
+            if (curUrl.contains("results")) {
+                reachedflag= true;
+            } else {
+                reachedflag= false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+        return reachedflag;
     }
 
     public void clickOnBookNow() {
-        Wait.untilElementIsVisible(driver, BookNowButton, 6);
-        BookNowButton.click();
+        try {
+            Wait.untilElementIsVisible(driver, BookNowButton, 6);
+            BookNowButton.click();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }
